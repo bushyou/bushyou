@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lang="http://www.springframework.org/schema/lang"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-2.0.xsd"
+	default-autowire="byName">
+	<!-- <import resource="applicationContext-service.xml"></import> -->
+	<bean name="userAction" class="bushyou.UserAction"></bean>
+	<bean name="jsonTest" class="bushyou.json.JsonTest"></bean>
+	<bean id="userService" class="bushyou.service.impl.UserServiceImpl"></bean>
+</beans>
