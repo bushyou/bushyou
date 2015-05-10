@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+    <!-- 为user1类取个别名 -->
+    <typeAlias alias="user1" type="bushyou.domain.User1"/>
+    
+    <!-- 配置表和实体Bean之间的映射关系 -->  
+    <resultMap id="user1Map" class="bushyou.domain.User1">  
+        <result property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+    </resultMap>
+    <!-- 添加数据 -->
+    <insert id="registerUser1" parameterClass="user1">
+        INSERT INTO user1 VALUES (NULL, #userName#);
+    </insert>
+    <!-- 删除指定id的数据 -->
+    <delete id="deleteUser1" parameterClass="user1">
+        DELETE FROM user1 WHERE user_id = #userId#;
+    </delete>
+    <!-- 修改指定id的数据 -->
+    <update id="updateUser1" parameterClass="user1">
+        UPDATE user1 
+        SET user_name = #userName#
+        WHERE user_id = #userId#;
+    </update>
+    <!-- 查询所有User信息 -->
+    <select id="findAllUser1s" resultMap="user1Map">
+        SELECT * FROM user1;
+    </select>
+    <!-- 查询指定id的User信息 -->
+    <select id="findUser1ById" resultMap="user1Map">
+        SELECT * FROM user1 WHERE user_id = #userId#;
+    </select>
+    <!-- 模糊查询 -->
+    <select id="findUsersByKeyword" resultMap="user1Map">
+        SELECT * FROM user1 WHERE user_name LIKE '%$keyword$%';
+    </select>
+    
+</sqlMap>

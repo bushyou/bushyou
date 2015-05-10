@@ -6,5 +6,30 @@
 	<!-- <import resource="applicationContext-service.xml"></import> -->
 	<bean name="userAction" class="bushyou.UserAction"></bean>
 	<bean name="jsonTest" class="bushyou.json.JsonTest"></bean>
-	<bean id="userService" class="bushyou.service.impl.UserServiceImpl"></bean>
+	<bean id="userService" class="bushyou.service.impl.UserServiceImpl">
+		<property name="user1dao" ref="user1DAO"></property>
+	</bean>
+	
+	
+	
+	
+	<bean id="user1DAO" class="bushyou.dao.impl.User1DAOImpl" scope="singleton">
+        <property name="sqlMapClient" ref="sqlMapClient"></property>
+    </bean>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/user" />
+		<property name="username" value="root" />
+		<property name="password" value="123321" />
+
+		<property name="maxIdle" value="15"></property>
+		<property name="maxActive" value="15"></property>
+		<property name="maxWait" value="1000"></property>
+	</bean>
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:sqlMapConfig.xml"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 </beans>

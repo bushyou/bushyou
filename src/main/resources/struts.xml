@@ -6,9 +6,9 @@
 <struts>
 	<!-- 指定由spring负责action对象的创建 -->
 	<constant name="struts.objectFactory" value="spring" />
-	<!-- 设置为开发模式 -->
+	<!-- 设置为开发模式 
 	<constant name="struts.devMode" value="true" />
-
+	-->
 	<package name="user" namespace="/user" extends="struts-default">
 		<action name="Login">
 			<result>/login.jsp</result>

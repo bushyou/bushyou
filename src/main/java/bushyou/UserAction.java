@@ -1,8 +1,11 @@
 package bushyou;
 
+import org.apache.log4j.Logger;
+
 import bushyou.service.UserService;
 
 public class UserAction {
+	Logger logger = Logger.getLogger(UserAction.class);
 	private String username;
 	private String password;
 	private UserService userService;
@@ -32,7 +35,9 @@ public class UserAction {
 	}
 
 	public  String execute(){
+		logger.debug("log4j");
 		System.out.println("useraction");
+		this.userService.doDbMethod();
 		System.out.println(this.userService.getName());
 		return "SUCCESS";
 	}
